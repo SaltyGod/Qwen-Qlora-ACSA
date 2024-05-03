@@ -52,3 +52,4 @@ transformers==4.37.2
 triton==2.2.0
 wandb==0.16.4
 yapf==0.40.2
+scikit-learn==1.4.2
