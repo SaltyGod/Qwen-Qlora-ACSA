@@ -13,9 +13,6 @@ from GenerateData import read_data,map_dataset
 from model import load_model,predict
 from Evaluate import evaluate_performance,save_results_to_txt
 
-
-
-
 if __name__=='__main__':
     # generate data
     DocList = ['train','dev','test']
