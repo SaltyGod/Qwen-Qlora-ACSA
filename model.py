@@ -42,3 +42,36 @@ def predict(question):
         generate_ids[:, inputs["input_ids"].shape[1] :], skip_special_tokens=True
     )[0]
     return response
+
+if __name__ == "__main__":
+    
+    # load the model
+    MODEL_DIR = "Qwen-1.5-1.8B-ASCA" # qloar qwen
+    TEST_PATH = "data/test.jsonl"
+    PREDICT_TEST_PATH = 'data/PredTest.jsonl'
+    model, tokenizer = load_model()
+    model.eval()
+    
+    # calcute the num of test data
+    data = pd.read_csv('./data/modified_test.csv')
+    MAX_JSON_OBJECTS = len(data)
+    
+    # start LLM inference and Use tqdm to track progress
+    with tqdm(total=MAX_JSON_OBJECTS, desc='Processing') as pbar, \
+        open(TEST_PATH, 'r', encoding='utf-8') as read_file, \
+        open(PREDICT_TEST_PATH, 'w', encoding='utf-8') as write_file:
+        for line in read_file:
+            json_object = json.loads(line)
+            
+            input_text = json_object['conversation'][0]['input']
+            PredOutput = predict(input_text)
+            json_object['conversation'][0]['PredOutput'] = PredOutput
+            
+            # Writes the modified JSON object to the output file, adding newlines
+            write_file.write(json.dumps(json_object) + '\n')
+            
+            # Update the progress bar of tqdm
+            pbar.update(1)
+            
+            if pbar.n >= MAX_JSON_OBJECTS:
+                break
