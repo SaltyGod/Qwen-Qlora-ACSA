@@ -61,7 +61,6 @@ def evaluate_performance(file_path):
         "Recall": recall_total,
         "F1 Score": f1_score_total
     }
-
     return performance_results
 
 def save_results_to_txt(results, output_file):
@@ -76,3 +75,9 @@ def save_results_to_txt(results, output_file):
             for metric, value in values.items():
                 f.write(f"\t{metric}: {value}\n")
             f.write("\n")
+
+if __name__ == "__main__":
+    file_path = 'data/PredTest.jsonl'
+    output_file = 'result/performance_results.txt'
+    results = evaluate_performance(file_path)
+    save_results_to_txt(results, output_file)
