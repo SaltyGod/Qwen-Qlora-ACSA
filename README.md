@@ -23,7 +23,7 @@ If you want to know more about the dataset and metrics, see https://github.com/M
 
 ## **Environment setup & qlora fine-tuning**
 
-My device：Linux，pytorch2.0.1+cu118
+My device：Linux，pytorch2.0.1+cu118, A100
 
 1. Before starting, please install the [xtuner](https://github.com/InternLM/tutorial/blob/main/xtuner/README.md) library first：
 ```cd ~
@@ -58,3 +58,4 @@ rm -rf ./hf
 ## **Inference**
 
 You can view related files and execute main.py to complete LLM inference tasks.
+The average accuracy of all test sets in 18 dimensions reached 86.1%.
