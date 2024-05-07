@@ -57,5 +57,5 @@ rm -rf ./hf
 
 ## **Inference**
 
-You can view related files and execute main.py to complete LLM inference tasks.
+If you want to perform inference, you only need to execute  `python main.py` in the system terminal in the directory where the current folder is located. If you configure the relevant environment correctly, you will run successfully.
 The average accuracy of all test sets in 18 dimensions reached 86.1%.
