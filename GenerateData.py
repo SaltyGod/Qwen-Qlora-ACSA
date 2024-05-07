@@ -51,9 +51,13 @@ def map_dataset(data_path, output_path, is_test = None):
                     ]
                 }
             )
-
-    
     with open(output_path, "w", encoding="utf-8") as f:
         for result in results:
             json.dump(result, f)
             f.write('\n')  
+            
+if __name__ == "__main__":
+    DocList = ['train','dev','test']
+    read_data(DocList)
+    map_dataset("./data/modified_dev.csv", "./data/train.jsonl")
+    map_dataset("./data/modified_test.csv", "./data/test.jsonl",is_test=True)
